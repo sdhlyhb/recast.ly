@@ -3,6 +3,7 @@ import exampleVideoData from '../data/exampleVideoData.js';
 import VideoPlayer from './VideoPlayer.js';
 import Search from './Search.js';
 import searchYouTube from '../lib/searchYoutube.js';
+import VideoDetails from './VideoDetails.js';
 // import fakeVideoData from '../data/fakeVideoData.js';
 
 class App extends React.Component {
@@ -20,6 +21,7 @@ class App extends React.Component {
     };
 
     // this.onVideoTitleClick = this.onVideoTitleClick.bind(this);
+    // this.videoSearch = this.searchVideos.bind(this);
 
   }
 
@@ -44,6 +46,7 @@ class App extends React.Component {
     });
   }
 
+
   componentDidMount() {
     searchYouTube('cocomelon', (data) => {
       event.preventDefault();
@@ -62,6 +65,7 @@ class App extends React.Component {
 
   render() {
 
+    // var debouncedSearch = _.debounce(this.videoSearch, 500);
     return (
 
       <div>
@@ -76,6 +80,10 @@ class App extends React.Component {
           <div className="col-md-7">
             <div>
               <VideoPlayer video={this.state.currentVideo}/>
+
+            </div>
+            <div>
+              <VideoDetails video={this.state.currentVideo}/>
 
             </div>
           </div>
