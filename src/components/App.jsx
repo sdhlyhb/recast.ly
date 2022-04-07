@@ -72,7 +72,8 @@ class App extends React.Component {
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
             <div>
-              <Search videoSearch = {this.searchVideos.bind(this)} />
+              {/* debounce ajax request to happen at most once per 500ms. Checked with setting the time to 5000ms and looks working */}
+              <Search videoSearch = {_.debounce(this.searchVideos.bind(this), 500)} />
             </div>
           </div>
         </nav>
