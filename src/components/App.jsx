@@ -35,7 +35,8 @@ class App extends React.Component {
     searchYouTube(query, (data) => {
       event.preventDefault();
       this.setState({
-        currentVideo: video
+        currentVideo: data[0],
+        videos: data
       });
 
     });
@@ -65,7 +66,7 @@ class App extends React.Component {
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
             <div>
-              <Search />
+              <Search videoSearch = {this.searchVideos.bind(this)} />
             </div>
           </div>
         </nav>
