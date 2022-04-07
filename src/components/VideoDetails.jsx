@@ -4,8 +4,9 @@ var VideoDetails = (props) => (
   <div className="video-details">
 
     <div >
-      <h4>some Video details</h4>
+      <h4>More Video details</h4>
       <div> Channel:  {props.video.snippet.channelTitle}</div>
+      {/* the ISO time need to be changed to the local time format */}
       <div> Publish Time: {props.video.snippet.publishTime}</div>
     </div>
 
