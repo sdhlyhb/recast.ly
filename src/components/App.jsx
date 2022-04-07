@@ -2,6 +2,7 @@ import VideoList from './VideoList.js';
 import exampleVideoData from '../data/exampleVideoData.js';
 import VideoPlayer from './VideoPlayer.js';
 import Search from './Search.js';
+import searchYouTube from '../lib/searchYoutube.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -26,6 +27,28 @@ class App extends React.Component {
     event.preventDefault();
     this.setState({
       currentVideo: video
+    });
+
+  }
+
+  searchVideos(query) {
+    searchYouTube(query, (data) => {
+      event.preventDefault();
+      this.setState({
+        currentVideo: video
+      });
+
+    });
+  }
+
+  componentDidMount(prevProps) {
+    searchYouTube('cocomelon', (data) => {
+      event.preventDefault();
+      this.setState({
+        videos: data,
+        currentVideo: data[0]
+      });
+
     });
 
   }
