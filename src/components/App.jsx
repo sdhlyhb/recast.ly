@@ -3,6 +3,7 @@ import exampleVideoData from '../data/exampleVideoData.js';
 import VideoPlayer from './VideoPlayer.js';
 import Search from './Search.js';
 import searchYouTube from '../lib/searchYoutube.js';
+// import fakeVideoData from '../data/fakeVideoData.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -11,7 +12,8 @@ class App extends React.Component {
     this.state = {
 
 
-      videos: exampleVideoData,
+      //replace the previous exampleVideoData with an empty array to pass rendering live data from youtube test in spec runner.
+      videos: [],
       //initial setting: first video of the video list.
       currentVideo: exampleVideoData[0]
 
@@ -42,7 +44,7 @@ class App extends React.Component {
     });
   }
 
-  componentDidMount(prevProps) {
+  componentDidMount() {
     searchYouTube('cocomelon', (data) => {
       event.preventDefault();
       this.setState({
