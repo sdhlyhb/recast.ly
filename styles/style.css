@@ -90,6 +90,12 @@ h5 {
   padding: 10px;
 }
 
+h4 {
+  font-style: italic;
+  font-size: 20px;
+
+}
+
 @media (max-width: 767px) {
   .video-list {
     margin-left: 20px;

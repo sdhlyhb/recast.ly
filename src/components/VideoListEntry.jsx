@@ -2,6 +2,7 @@ var VideoListEntry = (props) => (
   <div className="video-list-entry media">
     <div className="media-left media-middle">
       <img className="media-object" src={props.video.snippet.thumbnails.default.url} alt="" />
+      <button className="toggleBtn" onClick = {(event) => props.toggleClick(event, props.video)}>Play</button>
     </div>
     <div className="media-body">
       <div className="video-list-entry-title" onClick = {(event) => props.titleClick(event, props.video)}>{props.video.snippet.title}</div>

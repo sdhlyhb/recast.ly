@@ -1,16 +1,21 @@
 // import exampleVideoData from '../data/exampleVideoData.js';
+// var d = new Date(props.video.snippet.publishTime);
 
 var VideoDetails = (props) => (
-  <div className="video-details">
 
+
+  <div className="video-details">
     <div >
       <h4>More Video details</h4>
-      <div> Channel:  {props.video.snippet.channelTitle}</div>
-      {/* the ISO time need to be changed to the local time format */}
-      <div> Publish Time: {props.video.snippet.publishTime}</div>
+      <div id ="chanelInfo"> Channel:  {props.video.snippet.channelTitle}</div>
+
+      <div id="videoPublishDate"> Publish Time: {(new Date(props.video.snippet.publishTime)).toLocaleDateString('en-US')} </div>
     </div>
 
   </div>
+
+
+
 );
 
 // PropTypes tell other developers what `props` a component expects

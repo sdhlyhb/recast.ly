@@ -16,12 +16,15 @@ class App extends React.Component {
       //replace the previous exampleVideoData with an empty array to pass rendering live data from youtube test in spec runner.
       videos: [],
       //initial setting: first video of the video list.
-      currentVideo: exampleVideoData[0]
+      currentVideo: exampleVideoData[0],
+
+      play: false
 
     };
 
     // this.onVideoTitleClick = this.onVideoTitleClick.bind(this);
     // this.videoSearch = this.searchVideos.bind(this);
+
 
   }
 
@@ -34,6 +37,16 @@ class App extends React.Component {
     });
 
   }
+
+  onVideoToggleBtnClick(event, video) {
+    event.preventDefault();
+    this.setState(prevState =>({
+      currentVideo: video,
+      play: !prevState.play
+    }), ()=>console.log('toggle btn clicked!'));
+
+  }
+
 
   searchVideos(query) {
     searchYouTube(query, (data) => {
@@ -63,6 +76,7 @@ class App extends React.Component {
 
 
 
+
   render() {
 
     // var debouncedSearch = _.debounce(this.videoSearch, 500);
@@ -84,7 +98,11 @@ class App extends React.Component {
 
             </div>
             <div>
-              <VideoDetails video={this.state.currentVideo}/>
+              <VideoDetails
+                video={this.state.currentVideo}
+
+
+              />
 
             </div>
           </div>
