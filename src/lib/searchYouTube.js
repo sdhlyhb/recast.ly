@@ -12,6 +12,7 @@ var searchYouTube = (query, callback) => {
 
     data: {
       q: query,
+      key: YOUTUBE_API_KEY
     },
     contentType: 'application/json',
     success: function(data) {
