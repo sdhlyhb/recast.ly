@@ -18,34 +18,35 @@ class App extends React.Component {
       //initial setting: first video of the video list.
       currentVideo: exampleVideoData[0],
 
-      play: false
+      // play: false
 
     };
 
-    // this.onVideoTitleClick = this.onVideoTitleClick.bind(this);
-    // this.videoSearch = this.searchVideos.bind(this);
+    this.selectCurrentVideo = this.selectCurrentVideo.bind(this);
+    this.searchVideos = this.searchVideos.bind(this);
+
 
 
   }
 
 
   //when video title clicked, the video player will display clicked video.
-  onVideoTitleClick(event, video) {
+  selectCurrentVideo(event, video) {
     event.preventDefault();
     this.setState({
       currentVideo: video
     });
-
   }
 
-  onVideoToggleBtnClick(event, video) {
-    event.preventDefault();
-    this.setState(prevState =>({
-      currentVideo: video,
-      play: !prevState.play
-    }), ()=>console.log('toggle btn clicked!'));
 
-  }
+  // onVideoToggleBtnClick(event, video) {
+  //   event.preventDefault();
+  //   this.setState({
+  //     currentVideo: video,
+
+  //   });
+
+  // }
 
 
   searchVideos(query) {
@@ -87,7 +88,7 @@ class App extends React.Component {
           <div className="col-md-6 offset-md-3">
             <div>
               {/* debounce ajax request to happen at most once per 500ms. Checked with setting the time to 5000ms and looks working */}
-              <Search videoSearch = {_.debounce(this.searchVideos.bind(this), 500)} />
+              <Search videoSearch = {_.debounce(this.searchVideos, 1000)} />
             </div>
           </div>
         </nav>
@@ -111,7 +112,8 @@ class App extends React.Component {
               <VideoList
 
                 videos={this.state.videos}
-                titleClick = {this.onVideoTitleClick.bind(this)}
+                videoSelect = {this.selectCurrentVideo}
+
 
 
               />
