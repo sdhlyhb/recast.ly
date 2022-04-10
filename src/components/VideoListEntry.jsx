@@ -14,8 +14,15 @@ var VideoListEntry = (props) => (
         }}>Play</button>
       <div className="video-list-entry-title"
         onClick = {(event) => {
+          var curLink = props.video.id.videoId;
+          if (curLink.includes('?autoplay=1')) {
+            props.video.id.videoId = curLink.slice(0, curLink.indexOf('?autoplay=1'));
+          }
+
 
           props.videoSelect(event, props.video);
+
+
 
           console.log(props.video.id.videoId);
         }}
