@@ -6,11 +6,17 @@ var VideoListEntry = (props) => (
 
     </div>
     <div className="media-body">
-      <button className="toggleBtn" onClick = {(event) => props.videoSelect(event, props.video)}>Play</button>
+      <button className="toggleBtn"
+        onClick = {(event) => {
+          var prevLink = props.video.id.videoId;
+          props.videoSelect(event, props.video);
+          props.video.id.videoId = prevLink + '?autoplay=1';
+        }}>Play</button>
       <div className="video-list-entry-title"
         onClick = {(event) => {
+
           props.videoSelect(event, props.video);
-          // props.video.id.videoId += '?autoplay=1';
+
           console.log(props.video.id.videoId);
         }}
 
